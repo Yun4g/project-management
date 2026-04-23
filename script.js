@@ -20,6 +20,7 @@ function render() {
     return '<div class="card" style="animation-delay:' + (i * 0.05) + 's">' +
       '<div class="card-top">' +
         '<div class="card-title">' + escHtml(p.name) + '</div>' +
+
         '<div class="card-actions">' +
           '<button class="icon-btn" title="Edit" onclick="openEdit(' + p.id + ')">' +
             '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>' +
@@ -69,7 +70,8 @@ function overlayClick(e) {
 
 function saveProject() {
   let name = document.getElementById("f-name").value.trim();
-  if (!name) { toast("Project name is required.", "error"); document.getElementById("f-name").focus(); return; }
+  if (!name) { toast("Project name is required.", "error"); 
+    document.getElementById("f-name").focus(); return; }
 
   if (editingId) {
     projects = projects.map(function(p) {
@@ -80,14 +82,14 @@ function saveProject() {
         desc: document.getElementById("f-desc").value.trim(),
       };
     });
-    toast("Project updated ✓", "success");
+ 
   } else {
     projects.push({
       id: nextId++,
       name: name,
       desc: document.getElementById("f-desc").value.trim(),
     });
-    toast("Project added ✓", "success");
+
   }
 
   closeModal();
