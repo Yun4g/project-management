@@ -121,9 +121,7 @@ function confirmDelete() {
 
 let toastTimer = null;
 function toast(msg, type) {
-  let el = document.getElementById("toast");
-  el.textContent = msg;
-  el.className = "toast show" + (type ? " " + type : "");
+    console.log(type + ": " + msg);
   clearTimeout(toastTimer);
   toastTimer = setTimeout(function(){ el.classList.remove("show"); }, 2800);
 }
